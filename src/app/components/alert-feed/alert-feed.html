@@ -1,0 +1,16 @@
+<div class="alert-feed" *ngIf="alerts?.length; else noAlerts">
+  <h3>🔔 Recent Alerts</h3>
+  <div class="alert-row" *ngFor="let alert of alerts">
+    <span class="alert-left">
+      <span class="alert-icon" [ngClass]="getAlertColor(alert.type)">
+        {{ getAlertIcon(alert.type) }}
+      </span>
+      {{ alert.message }}
+    </span>
+    <span class="alert-time">{{ alert.time }}</span>
+  </div>
+</div>
+
+<ng-template #noAlerts>
+  <p>No alerts to show</p>
+</ng-template>

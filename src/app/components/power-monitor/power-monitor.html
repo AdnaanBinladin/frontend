@@ -1,0 +1,60 @@
+<div class="solar-panel" *ngIf="powerData">
+  <h3>⚡ Solar Power</h3>
+
+  <div class="solar-overview">
+    <div class="pie-chart">
+      <svg viewBox="0 0 36 36">
+        <circle class="bg" cx="18" cy="18" r="16" />
+        <circle
+          class="meter"
+          cx="18"
+          cy="18"
+          r="16"
+          [attr.stroke-dasharray]="calcStroke(powerData.batteryPercentage)"
+        />
+        <text x="18" y="20" class="percentage">{{ powerData.batteryPercentage }}%</text>
+      </svg>
+    </div>
+
+    <div class="solar-graph">
+      <!-- Insert dynamic SVG or graph based on powerData.graphPoints if needed -->
+      <!-- For simplicity, keeping the static curve for now -->
+      <div class="fake-graph">
+        <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3f51b5" stop-opacity="0.3" />
+              <stop offset="100%" stop-color="#3f51b5" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+
+          <path
+            d="M0,30 
+               C 10,25 20,20 30,25
+               C 40,35 50,35 60,20
+               C 70,10 80,15 90,20 
+               C 95,25 100,30 100,30 
+               L100,40 L0,40 Z"
+            fill="url(#areaGradient)"
+          />
+          <path
+            d="M0,30 
+               C 10,25 20,20 30,25
+               C 40,35 50,35 60,20
+               C 70,10 80,15 90,20 
+               C 95,25 100,30 100,30"
+            fill="none"
+            stroke="#3f51b5"
+            stroke-width="2"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="solar-details">
+    <p>Current draw: {{ powerData.currentDraw }}A</p>
+    <p>Solar input: {{ powerData.solarInput }}V</p>
+    <button class="blue-btn" (click)="onSeeAllProducts()">See All Products</button>
+  </div>
+</div>

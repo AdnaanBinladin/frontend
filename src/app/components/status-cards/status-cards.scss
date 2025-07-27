@@ -1,0 +1,42 @@
+.status-cards {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  justify-content: center;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  .status-box {
+    scroll-snap-align: center;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: 140px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+  }
+
+    .icon-label {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+
+      .status-icon {
+        font-size: 24px;
+      }
+
+      .status-text {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+
+        strong {
+          font-weight: 600;
+        }
+      }
+    }
+  }

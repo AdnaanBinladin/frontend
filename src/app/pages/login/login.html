@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+  <!-- Animated 3D hexagon wireframe logo -->
+  <div class="logo-3d">
+    <svg viewBox="0 0 200 200" width="150" height="150">
+      <!-- Back face (hexagon) -->
+      <polygon points="100,20 150,50 150,110 100,140 50,110 50,50"
+               stroke="#1565c0" stroke-width="2" fill="none" />
+
+      <!-- Front face (offset forward/down-right) -->
+      <polygon points="120,40 170,70 170,130 120,160 70,130 70,70"
+               stroke="#0d47a1" stroke-width="2" fill="none" />
+
+      <!-- Connector edges (6 lines) -->
+      <line x1="100" y1="20" x2="120" y2="40" stroke="#1976d2" stroke-width="1.5" />
+      <line x1="150" y1="50" x2="170" y2="70" stroke="#1976d2" stroke-width="1.5" />
+      <line x1="150" y1="110" x2="170" y2="130" stroke="#1976d2" stroke-width="1.5" />
+      <line x1="100" y1="140" x2="120" y2="160" stroke="#1976d2" stroke-width="1.5" />
+      <line x1="50" y1="110" x2="70" y2="130" stroke="#1976d2" stroke-width="1.5" />
+      <line x1="50" y1="50" x2="70" y2="70" stroke="#1976d2" stroke-width="1.5" />
+
+      <!-- Internal diagonals on back face -->
+      <line x1="100" y1="20" x2="100" y2="140" stroke="#90caf9" stroke-dasharray="3,3" stroke-width="1" />
+      <line x1="50" y1="50" x2="150" y2="110" stroke="#90caf9" stroke-dasharray="3,3" stroke-width="1" />
+      <line x1="150" y1="50" x2="50" y2="110" stroke="#90caf9" stroke-dasharray="3,3" stroke-width="1" />
+
+      <!-- Internal diagonals on front face -->
+      <line x1="120" y1="40" x2="120" y2="160" stroke="#64b5f6" stroke-dasharray="3,3" stroke-width="1" />
+      <line x1="70" y1="70" x2="170" y2="130" stroke="#64b5f6" stroke-dasharray="3,3" stroke-width="1" />
+      <line x1="170" y1="70" x2="70" y2="130" stroke="#64b5f6" stroke-dasharray="3,3" stroke-width="1" />
+    </svg>
+  </div>
+
+  <mat-card class="login-card">
+    <h2>Login</h2>
+
+    <form (ngSubmit)="onLogin()" class="login-form">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="email" name="email" required type="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" name="password" required type="password" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Login</button>
+    </form>
+  </mat-card>
+</div>

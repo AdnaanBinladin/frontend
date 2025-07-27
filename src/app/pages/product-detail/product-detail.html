@@ -1,0 +1,66 @@
+<div class="product-detail-container" *ngIf="product">
+  <div class="product-header">
+    <h2>{{ product.name }}</h2>
+    <button mat-raised-button color="primary" (click)="goBack()">
+      Back to Inventory
+    </button>
+  </div>
+
+  <p class="product-description" *ngIf="product.description">
+    {{ product.description }}
+  </p>
+
+  <div class="status-info">
+    <ng-container *ngIf="product.status">
+      <span class="status-label">Overall Status:</span>
+      <span
+        class="status-value"
+        [ngClass]="getStatusClass(product.status)"
+      >
+        {{ product.status }}
+      </span>
+    </ng-container>
+
+    <ng-container *ngIf="product.quantity !== undefined">
+      <span class="quantity-label">Total Quantity:</span>
+      <span class="quantity-value">{{ product.quantity }} kg</span>
+    </ng-container>
+  </div>
+
+  <mat-divider *ngIf="product.fishTypes?.length"></mat-divider>
+
+  <h3 class="fish-types-header" *ngIf="product.fishTypes?.length">Fish Types</h3>
+
+  <div class="fish-types-container" *ngIf="product.fishTypes?.length">
+    <mat-card *ngFor="let fish of product.fishTypes" class="fish-card">
+      <mat-card-header>
+        <mat-card-title>{{ fish.type || 'Unknown Fish' }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="fish-detail">
+          <div class="detail-row" *ngIf="fish.arrivalDate">
+            <span class="detail-label">Arrival Date:</span>
+            <span class="detail-value">{{ fish.arrivalDate }}</span>
+          </div>
+          <div class="detail-row" *ngIf="fish.freshness">
+            <span class="detail-label">Freshness:</span>
+            <span class="detail-value" [ngClass]="getFreshnessClass(fish.freshness)">
+              {{ fish.freshness }}
+            </span>
+          </div>
+          <div class="detail-row" *ngIf="fish.kgs !== undefined">
+            <span class="detail-label">Quantity:</span>
+            <span class="detail-value">{{ fish.kgs }} kg</span>
+          </div>
+          <div class="detail-row" *ngIf="fish.status">
+            <span class="detail-label">Status:</span>
+            <span class="detail-value" [ngClass]="getStatusClass(fish.status)">
+              {{ fish.status }}
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

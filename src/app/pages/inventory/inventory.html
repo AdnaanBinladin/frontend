@@ -1,0 +1,88 @@
+<div class="inventory-container" *ngIf="!product">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-icon matPrefix>search</mat-icon>
+    <input
+      matInput
+      placeholder="Search products..."
+      [(ngModel)]="searchQuery"
+    />
+  </mat-form-field>
+
+  <mat-list class="product-list">
+    <mat-list-item *ngFor="let item of filteredProducts" class="product-item">
+      <div class="product-info">
+        <mat-icon class="product-icon">inventory_2</mat-icon>
+        <div class="text-content">
+          <h3 class="product-name">{{ item.name }}</h3>
+          <span class="product-status" [ngClass]="getStatusClass(item.status)">
+            {{ item.status }}
+          </span>
+        </div>
+      </div>
+
+      <div class="product-actions">
+        <span class="product-quantity">{{ item.quantity }} kg</span>
+        <button mat-icon-button (click)="viewProductDetails(item)">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div class="product-detail-container" *ngIf="product">
+  <div class="product-header">
+    <h2>{{ product?.name }}</h2>
+    <button mat-raised-button color="primary" (click)="goBack()">
+      Back to Inventory
+    </button>
+  </div>
+
+  <p class="product-description">{{ product?.description }}</p>
+
+  <div class="status-info">
+    <span class="status-label">Overall Status:</span>
+    <span class="status-value" [ngClass]="getStatusClass(product?.status || '')">
+      {{ product?.status }}
+    </span>
+    <span class="quantity-label">Total Quantity:</span>
+    <span class="quantity-value">{{ product?.quantity }} kg</span>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h3 class="fish-types-header">Fish Types</h3>
+
+  <div class="fish-types-container">
+    <mat-card *ngFor="let fish of product?.fishTypes" class="fish-card">
+      <mat-card-header>
+        <mat-card-title>{{ fish.type }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="fish-detail">
+          <div class="detail-row">
+            <span class="detail-label">Arrival Date:</span>
+            <span class="detail-value">{{ fish.arrivalDate }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Freshness:</span>
+            <span class="detail-value" [ngClass]="getFreshnessClass(fish.freshness)">
+              {{ fish.freshness }}
+            </span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Quantity:</span>
+            <span class="detail-value">{{ fish.kgs }} kg</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Status:</span>
+            <span class="detail-value" [ngClass]="getStatusClass(fish.status)">
+              {{ fish.status }}
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

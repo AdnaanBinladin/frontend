@@ -1,0 +1,114 @@
+.product-detail-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-description {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.status-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.status-label, .quantity-label {
+  font-weight: 500;
+}
+
+.status-value, .quantity-value {
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.status-value.low-stock {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.status-value.transfer {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.fish-types-header {
+  margin: 20px 0 15px;
+  color: #333;
+}
+
+.fish-types-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.fish-card {
+  transition: box-shadow 0.3s ease;
+}
+
+.fish-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.fish-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.detail-value {
+  text-align: right;
+}
+
+.expiring {
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+.low-stock {
+  color: #d32f2f;
+}
+
+.transfer {
+  color: #ff9800;
+}
+
+@media (max-width: 600px) {
+  .product-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .fish-types-container {
+    grid-template-columns: 1fr;
+  }
+  .status-value {
+  &.low-stock { background-color: #ffebee; color: #d32f2f; }
+  &.transfer, &.Finish\ Transfer { background-color: #fff3e0; color: #e65100; }
+  &.in-stock { background-color: #e8f5e9; color: #388e3c; }
+}
+
+}

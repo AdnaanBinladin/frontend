@@ -1,0 +1,24 @@
+<div class="inventory-transfer-card">
+  <h3>⚡ Inventory Transfer</h3>
+
+  <div *ngIf="loading">Loading transfers...</div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <ng-container *ngIf="!loading && !error">
+    <div
+      *ngFor="let store of stores"
+      class="transfer-row"
+      (click)="toggleStore(store)"
+    >
+      <span class="transfer-info">{{ store }} →</span>
+      <span class="transfer-amount">{{ getTotalKg(store) }}kg</span>
+    </div>
+
+    <mat-list *ngIf="expandedStore" class="fish-list">
+      <mat-list-item *ngFor="let fish of fishTransfers[expandedStore]">
+        <span>{{ fish.fish }}</span>
+        <span class="kg">{{ fish.kg }}kg</span>
+      </mat-list-item>
+    </mat-list>
+  </ng-container>
+</div>

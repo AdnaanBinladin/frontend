@@ -1,0 +1,15 @@
+<div class="status-cards" *ngIf="cards?.length; else noCards">
+  <div class="status-box" *ngFor="let card of cards" [ngClass]="card.statusClass">
+    <div class="icon-label">
+      <span class="status-icon">{{ card.icon }}</span>
+      <div class="status-text">
+        <strong>{{ card.title }}</strong>
+        <div>{{ card.subtitle }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noCards>
+  <p>No status cards available.</p>
+</ng-template>
