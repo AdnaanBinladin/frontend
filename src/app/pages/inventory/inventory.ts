@@ -40,7 +40,7 @@ export class Inventory implements OnInit {
   }
 
   fetchInventory(): void {
-    this.http.get<any[]>('https://your-api-url.com/api/inventory').subscribe({
+    this.http.get<any[]>('https://localhost:7275/api/Inventory').subscribe({
       next: data => this.products = data,
       error: err => console.error('Inventory load failed', err)
     });

@@ -25,7 +25,7 @@ export class InventoryAlerts implements OnInit {
   loading = true;
   error: string | null = null;
 
-  private apiUrl = 'https://your-api-url.com/api/inventory-transfers'; // Replace with your real backend URL
+  private apiUrl = 'https://localhost:7275/api/Inventory'; // Replace with your real backend URL
 
   constructor(private http: HttpClient) {}
 

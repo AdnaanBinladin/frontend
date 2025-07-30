@@ -17,10 +17,24 @@ export class login {
   email = '';
   password = '';
 
-  constructor(private router: Router) {} // ✅ Inject router here
+  constructor(private router: Router) {} // ✅ Inject Router
 
   onLogin() {
     console.log('Logging in:', this.email, this.password);
-    this.router.navigate(['/dashboard']); // ✅ Use injected router
+
+    fetch('https://localhost:7275/api/Auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: this.email, password: this.password })
+    })
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem('token', data.token); // ✅ Save the token
+        this.router.navigate(['/dashboard']);       // ✅ Navigate after saving
+      })
+      .catch(err => {
+        console.error('Login error:', err);
+        alert('Login failed');
+      });
   }
 }
